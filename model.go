@@ -11,8 +11,7 @@ var db *gorm.DB
 
 func startDB() {
 	const addr = "postgresql://domainfouser@localhost:26257/domainfo?sslmode=disable"
-	db, err := gorm.Open("postgres", addr)
-	manageError(err, "Database connection failed")
+	db, _ = gorm.Open("postgres", addr)
 	db.AutoMigrate(&Domain{})
 	db.AutoMigrate(&Server{})
 }
